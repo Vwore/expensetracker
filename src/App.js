@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Grid2 } from "@mui/material";
+import { useEffect, useState } from "react";
+import HeroContainer from "./HeroContainer/HeroContainer";
+import RecentTransaction from "./RecentTransaction/RecentTransaction";
+const catergory = ["food", "entertainment", "travel"];
+
+const Expense = [
+  { catergory: "food", date: new Date(), amount: 150, title: "Samosa" },
+  { catergory: "travel", date: new Date(), amount: 400, title: "Taxi" },
+  { catergory: "travel", date: new Date(), amount: 1000, title: "trip to guwahati" },
+  { catergory: "entertainment", date: new Date(), amount: 200, title: "Chavva" },
+];
 
 function App() {
+  const [expense,setExpense] = useState([]);
+  useEffect(() => {
+    localStorage.setItem("balance", 5000);
+    localStorage.setItem("expense", JSON.stringify(Expense));
+
+  }, []);
+
+  useEffect(()=>{
+    setExpense(JSON.parse(localStorage.getItem('expense')));
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 style={{ color: "white" }}>Expense Tracker</h1>
+      <HeroContainer expense={expense}/>
+      <Grid2 container>
+        <Grid2 Item size={7}>
+          <RecentTransaction expense={expense} />
+        </Grid2>
+        <Grid2 Item size={5}></Grid2>
+      </Grid2>
     </div>
   );
 }
