@@ -27,12 +27,12 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("balance") == null) {
       localStorage.setItem("balance", 5000);
-      localStorage.setItem("expense", JSON.stringify(Expense));
+      localStorage.setItem("expenses", JSON.stringify(Expense));
     }
   }, []);
 
   useEffect(() => {
-    setExpense(JSON.parse(localStorage.getItem("expense")));
+    setExpense(JSON.parse(localStorage.getItem("expenses")));
   }, []);
 
   return (

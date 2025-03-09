@@ -29,6 +29,8 @@ function BalanceModal({
           onChange={(e) => {
             setModalIncome(e.target.value);
           }}
+          type="number"
+          placeholder="Income Amount"
         />
         <Button
           variant="contained"
@@ -39,6 +41,8 @@ function BalanceModal({
             setBalance(newBalance);
             setShowBalanceModal(false);
           }}
+          type="submit"
+          label='Add Balance'
         >
           Add Balance
         </Button>

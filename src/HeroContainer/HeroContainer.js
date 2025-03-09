@@ -70,6 +70,7 @@ function HeroContainer({ expense,setExpense }) {
           onClick={() => {
             setShowBalanceModal(true);
           }}
+          type="button"
         >
           {'+ Add Income'}
         </Button>
@@ -83,6 +84,7 @@ function HeroContainer({ expense,setExpense }) {
           variant="contained"
           // startIcon={<AddIcon />}
           onClick={()=>{setShowExpenseModal(true)}}
+          type="button"
         >
           {'+ Add Expense'}
         </Button>

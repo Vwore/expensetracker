@@ -41,6 +41,7 @@ function ExpenseModal({
         <TextField
           variant="outlined"
           label="Title"
+          name="title"
           style={{ borderRadius: "20px" }}
           value={title}
           onChange={(e) => {
@@ -50,6 +51,7 @@ function ExpenseModal({
         <TextField
           label="Price"
           style={{ borderRadius: "20px" }}
+          name="price"
           variant="standard"
           value={price}
           onChange={(e) => {
@@ -69,6 +71,7 @@ function ExpenseModal({
             onChange={(e) => {
               setCatergory(e.target.value);
             }}
+            name="category"
           >
             <MenuItem value="" disabled>
               Catergory
@@ -90,6 +93,7 @@ function ExpenseModal({
                 // console.log(value.$d);
                 setDate(value);
               }}
+              name="date"
             />
           </DemoContainer>
         </LocalizationProvider>
@@ -114,6 +118,8 @@ function ExpenseModal({
           localStorage.setItem("balance", balance - Number(price));
           setShowExpenseModal(false);
         }}
+        type="submit"
+        label='Add Balance'
       >
         Add Expense
       </Button>
