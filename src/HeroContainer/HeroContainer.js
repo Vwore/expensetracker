@@ -66,12 +66,12 @@ function HeroContainer({ expense,setExpense }) {
         <Button
           className="add-income"
           variant="contained"
-          startIcon={<AddIcon />}
+          // startIcon={<AddIcon />}
           onClick={() => {
             setShowBalanceModal(true);
           }}
         >
-          Add Income
+          {'+ Add Income'}
         </Button>
       </Grid2>
       <Grid2 Item className="container-box" size={4} paddingY={5}>
@@ -81,10 +81,10 @@ function HeroContainer({ expense,setExpense }) {
         <Button
           className="add-expense"
           variant="contained"
-          startIcon={<AddIcon />}
+          // startIcon={<AddIcon />}
           onClick={()=>{setShowExpenseModal(true)}}
         >
-          Add Expense
+          {'+ Add Expense'}
         </Button>
       </Grid2>
       <Grid2 Item className="container-chart" size={4}>
