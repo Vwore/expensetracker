@@ -1,0 +1,27 @@
+.Modal{
+    background-color:  #EFEFEFD9;
+    border-radius: 15px;
+    position: absolute;
+    top: 200px;
+    left: 600px;
+    padding: 20px;
+}
+
+.modal-container{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 15px;
+}
+
+.modal-form{
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.modal-input{
+    background-color: white;
+    border: none;
+}

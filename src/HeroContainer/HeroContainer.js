@@ -1,7 +1,10 @@
-import { Box, Button, Grid2 } from "@mui/material";
+import { Button, Grid2 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell } from "recharts";
+import "./style.css";
+import BalanceModal from "./BalanceModal/BalanceModal";
+import ExpenseModal from "./ExpenseModal/ExpenseModal";
 
 const catergory = ["food", "entertainment", "travel"];
 
@@ -11,7 +14,7 @@ function dataGenerator(expense) {
   expense.forEach((value) => {
     data[value.catergory] = data[value.catergory] + value.amount;
   });
-  const ans = catergory.map((value)=>({name:value,value:data[value]}));
+  const ans = catergory.map((value) => ({ name: value, value: data[value] }));
   return ans;
 }
 
@@ -44,13 +47,16 @@ const renderCustomizedLabel = ({
   );
 };
 
-function HeroContainer({ expense }) {
+function HeroContainer({ expense,setExpense }) {
   const [balance, setBalance] = useState(0);
+  const [showBalanceModal, setShowBalanceModal] = useState(false);
+  const [showExpenseModal, setShowExpenseModal] = useState(false);
+
   useEffect(() => {
-    setBalance(localStorage.getItem("balance"));
+    setBalance(JSON.parse(localStorage.getItem("balance")));
   }, []);
   const data = dataGenerator(expense);
-  console.log(data);
+
   return (
     <Grid2 container className="container" spacing={5}>
       <Grid2 Item className="container-box" size={4} paddingY={5}>
@@ -61,6 +67,9 @@ function HeroContainer({ expense }) {
           className="add-income"
           variant="contained"
           startIcon={<AddIcon />}
+          onClick={() => {
+            setShowBalanceModal(true);
+          }}
         >
           Add Income
         </Button>
@@ -73,6 +82,7 @@ function HeroContainer({ expense }) {
           className="add-expense"
           variant="contained"
           startIcon={<AddIcon />}
+          onClick={()=>{setShowExpenseModal(true)}}
         >
           Add Expense
         </Button>
@@ -98,6 +108,20 @@ function HeroContainer({ expense }) {
           </Pie>
         </PieChart>
       </Grid2>
+      <BalanceModal
+        setShowBalanceModal={setShowBalanceModal}
+        showBalanceModal={showBalanceModal}
+        balance={balance}
+        setBalance={setBalance}
+      />
+      <ExpenseModal
+        showExpenseModal={showExpenseModal}
+        setShowExpenseModal={setShowExpenseModal}
+        balance={balance}
+        setBalance={setBalance}
+        expense={expense}
+        setExpense={setExpense}
+      />
     </Grid2>
   );
 }

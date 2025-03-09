@@ -8,26 +8,37 @@ const catergory = ["food", "entertainment", "travel"];
 const Expense = [
   { catergory: "food", date: new Date(), amount: 150, title: "Samosa" },
   { catergory: "travel", date: new Date(), amount: 400, title: "Taxi" },
-  { catergory: "travel", date: new Date(), amount: 1000, title: "trip to guwahati" },
-  { catergory: "entertainment", date: new Date(), amount: 200, title: "Chavva" },
+  {
+    catergory: "travel",
+    date: new Date(),
+    amount: 1000,
+    title: "trip to guwahati",
+  },
+  {
+    catergory: "entertainment",
+    date: new Date(),
+    amount: 200,
+    title: "Chavva",
+  },
 ];
 
 function App() {
-  const [expense,setExpense] = useState([]);
+  const [expense, setExpense] = useState([]);
   useEffect(() => {
-    localStorage.setItem("balance", 5000);
-    localStorage.setItem("expense", JSON.stringify(Expense));
-
+    if (localStorage.getItem("balance") == null) {
+      localStorage.setItem("balance", 5000);
+      localStorage.setItem("expense", JSON.stringify(Expense));
+    }
   }, []);
 
-  useEffect(()=>{
-    setExpense(JSON.parse(localStorage.getItem('expense')));
-  },[])
+  useEffect(() => {
+    setExpense(JSON.parse(localStorage.getItem("expense")));
+  }, []);
 
   return (
     <div className="App">
       <h1 style={{ color: "white" }}>Expense Tracker</h1>
-      <HeroContainer expense={expense}/>
+      <HeroContainer expense={expense} setExpense={setExpense} />
       <Grid2 container>
         <Grid2 Item size={7}>
           <RecentTransaction expense={expense} />
