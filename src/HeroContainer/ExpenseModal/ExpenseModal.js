@@ -7,7 +7,6 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
-import MenuItem from "@mui/material/MenuItem";
 
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -61,9 +60,8 @@ function ExpenseModal({
       </div>
       <div className="modal-form">
         <FormControl style={{ width: "40%" }}>
-          <InputLabel id="select-label">Category</InputLabel>
 
-          <Select
+          <select
             labelId="select-label"
             value={catergory}
             label="Catergory"
@@ -73,13 +71,13 @@ function ExpenseModal({
             }}
             name="category"
           >
-            <MenuItem value="" disabled>
+            <option value="" disabled>
               Catergory
-            </MenuItem>
-            <MenuItem value={"food"}>Food</MenuItem>
-            <MenuItem value={"entertainment"}>Entertainment</MenuItem>
-            <MenuItem value={"travel"}>Travel</MenuItem>
-          </Select>
+            </option>
+            <option value={"food"}>Food</option>
+            <option value={"entertainment"}>Entertainment</option>
+            <option value={"travel"}>Travel</option>
+          </select>
         </FormControl>
 
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -114,7 +112,7 @@ function ExpenseModal({
           setBalance(balance - Number(price));
           setExpense(newExpense);
 
-          localStorage.setItem("expense", JSON.stringify(newExpense));
+          localStorage.setItem("expenses", JSON.stringify(newExpense));
           localStorage.setItem("balance", balance - Number(price));
           setShowExpenseModal(false);
         }}
