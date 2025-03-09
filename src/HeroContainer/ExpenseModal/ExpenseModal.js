@@ -26,11 +26,18 @@ function ExpenseModal({
   const [price, setPrice] = useState("");
   const [catergory, setCatergory] = useState("");
   const [date, setDate] = useState(dayjs("2022-04-17"));
+function closing(){
+  setTitle('');
+  setPrice('');
+  setCatergory('');
+  setDate(dayjs("2022-04-17"));
+}
 
   return (
     <ReactModal
       isOpen={showExpenseModal}
       onRequestClose={() => {
+        closing();
         setShowExpenseModal(false);
       }}
       className="Modal"
@@ -114,7 +121,9 @@ function ExpenseModal({
 
           localStorage.setItem("expenses", JSON.stringify(newExpense));
           localStorage.setItem("balance", balance - Number(price));
+          closing();
           setShowExpenseModal(false);
+
         }}
         type="submit"
         label='Add Balance'
@@ -126,6 +135,7 @@ function ExpenseModal({
         style={{ backgroundColor: "#D9D9D9", borderRadius: "20px" }}
         onClick={() => {
           setShowExpenseModal(false);
+          closing();
         }}
       >
         Cancel
