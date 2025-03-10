@@ -19,7 +19,7 @@ function dataGenerator(expense) {
 }
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
-
+let count = 0;
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
   cx,
@@ -53,7 +53,9 @@ function HeroContainer({ expense,setExpense }) {
   const [showExpenseModal, setShowExpenseModal] = useState(false);
 
   useEffect(() => {
-    setBalance(Number(JSON.parse(localStorage.getItem("balance"))));
+    console.log(count++,localStorage.getItem("balance"));
+    if(localStorage.getItem('balance')==null) setBalance(5000);
+    else setBalance(Number(JSON.parse(localStorage.getItem("balance"))));
   }, [expense]);
   const data = dataGenerator(expense);
 
