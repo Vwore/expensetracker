@@ -29,11 +29,10 @@ function App() {
       localStorage.setItem("balance", 5000);
       localStorage.setItem("expenses", JSON.stringify(Expense));
     }
+    setExpense(JSON.parse(localStorage.getItem('expenses')));
   }, []);
 
-  useEffect(() => {
-    setExpense(JSON.parse(localStorage.getItem("expenses")));
-  }, []);
+ 
 
   return (
     <div className="App">

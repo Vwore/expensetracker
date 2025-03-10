@@ -54,7 +54,7 @@ function HeroContainer({ expense,setExpense }) {
 
   useEffect(() => {
     setBalance(Number(JSON.parse(localStorage.getItem("balance"))));
-  }, []);
+  }, [expense]);
   const data = dataGenerator(expense);
 
   return (
