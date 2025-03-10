@@ -7,7 +7,7 @@ function RecentTransaction({expense}) {
     <Box>
       <h2>Recent Transactions</h2>
       <Box className="card-container">
-        {expense.map((value,index)=>(<TransactionCard  value={value} />))}
+        {expense?.map((value,index)=>(<TransactionCard  value={value} />))}
       </Box>
     </Box>
   );

@@ -11,10 +11,10 @@ const catergory = ["food", "entertainment", "travel"];
 function dataGenerator(expense) {
   const data = { food: 0, entertainment: 0, travel: 0 };
 
-  expense.forEach((value) => {
+  expense?.forEach((value) => {
     data[value.catergory] = data[value.catergory] + value.amount;
   });
-  const ans = catergory.map((value) => ({ name: value, value: data[value] }));
+  const ans = catergory?.map((value) => ({ name: value, value: data[value] }));
   return ans;
 }
 
@@ -103,7 +103,7 @@ function HeroContainer({ expense,setExpense }) {
             fill="#8884d8"
             dataKey="value"
           >
-            {data.map((entry, index) => (
+            {data?.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
